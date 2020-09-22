@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  # Notes app backend service
+  app-server:
+    # Configuration for building the docker image for the note-app service
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "9095:9095"
+    restart: always
+    depends_on:
+      - db # Service depends on mysql; start mysql
+    environment: # Pass environment variables to the service
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3304/notesapp?useSSL=false
+      SPRING_DATASOURCE_USERNAME: appuser
+      SPRING_DATASOURCE_PASSWORD: appuser
+      SPRING_JPA_DATABASE-PLATFORM: org.hibernate.dialect.MySQL8Dialect
+    networks: # Networks to join
+      - backend
+
+  # Database Service (Mysql)
+  db:
+    image: mysql
+    ports:
+      - "3304:3304"
+    restart: always
+    environment:
+      MYSQL_DATABASE: notesapp
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: appuser
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - backend
+
+# Volumes
+volumes:
+  db-data:
+
+# Networks to be created for communication
+networks:
+  backend:
