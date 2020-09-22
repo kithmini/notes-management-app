@@ -66,7 +66,7 @@ public class DtoConverter {
         return archivedNoteModel;
     }
 
-    public com.bkitsen.notesapp.persistence.entity.ArchivedNote NoteModelToArchivedNoteEntity(final com.bkitsen.notesapp.models.Note noteModel) {
+    public com.bkitsen.notesapp.persistence.entity.ArchivedNote noteModelToArchivedNoteEntity(final com.bkitsen.notesapp.models.Note noteModel) {
         final com.bkitsen.notesapp.persistence.entity.ArchivedNote archivedNoteEntity = new com.bkitsen.notesapp.persistence.entity.ArchivedNote();
         if (noteModel != null) {
             archivedNoteEntity.setId(noteModel.getId());
@@ -80,7 +80,7 @@ public class DtoConverter {
         return archivedNoteEntity;
     }
 
-    public com.bkitsen.notesapp.models.Note ArchivedNoteEntityToNoteModel(final com.bkitsen.notesapp.persistence.entity.ArchivedNote archivedNoteEntity) {
+    public com.bkitsen.notesapp.models.Note archivedNoteEntityToNoteModel(final com.bkitsen.notesapp.persistence.entity.ArchivedNote archivedNoteEntity) {
         final com.bkitsen.notesapp.models.Note noteModel = new com.bkitsen.notesapp.models.Note();
         if (archivedNoteEntity != null) {
             noteModel.setId(archivedNoteEntity.getId());

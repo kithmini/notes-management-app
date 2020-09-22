@@ -59,7 +59,7 @@ public class ArchivedNoteServiceImpl implements ArchivedNoteService {
         final Note savedNote = notesService.getNoteById(id);
         if (savedNote != null) {
             requestValidator.setUserFromPrincipalToNote(principal, savedNote, UPDATE);
-            final com.bkitsen.notesapp.persistence.entity.ArchivedNote savedArchivedNote = archivedNotesRepository.save(dtoConverter.NoteModelToArchivedNoteEntity(savedNote));
+            final com.bkitsen.notesapp.persistence.entity.ArchivedNote savedArchivedNote = archivedNotesRepository.save(dtoConverter.noteModelToArchivedNoteEntity(savedNote));
             notesService.deleteNote(id);
             return dtoConverter.archivedNotesEntityToModel(savedArchivedNote);
         }
@@ -76,7 +76,7 @@ public class ArchivedNoteServiceImpl implements ArchivedNoteService {
         LOGGER.info("Unarchive note service invoked");
         final Optional<com.bkitsen.notesapp.persistence.entity.ArchivedNote> archivedNote = archivedNotesRepository.findById(id);
         if (archivedNote.isPresent()) {
-            final Note convertedNote = dtoConverter.ArchivedNoteEntityToNoteModel(archivedNote.get());
+            final Note convertedNote = dtoConverter.archivedNoteEntityToNoteModel(archivedNote.get());
             requestValidator.setUserFromPrincipalToNote(principal, convertedNote, UPDATE);
             final Note unarchivedNote = notesService.createNote(convertedNote, principal);
             archivedNotesRepository.deleteById(id);

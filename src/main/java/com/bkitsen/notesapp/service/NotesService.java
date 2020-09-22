@@ -1,6 +1,5 @@
 package com.bkitsen.notesapp.service;
 
-import com.bkitsen.notesapp.models.ArchivedNote;
 import com.bkitsen.notesapp.models.Note;
 
 import java.security.Principal;

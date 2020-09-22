@@ -1,6 +1,5 @@
 package com.bkitsen.notesapp.persistence.entity;
 
-import com.bkitsen.notesapp.models.Note;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;

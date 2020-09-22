@@ -1,7 +1,6 @@
 package com.bkitsen.notesapp.utility;
 
 import com.bkitsen.notesapp.models.Note;
-import com.bkitsen.notesapp.persistence.entity.ArchivedNote;
 import org.springframework.stereotype.Component;
 
 import java.security.Principal;
